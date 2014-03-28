@@ -20,6 +20,7 @@ package com.flaum;
  * A Slime is an instance of a player
  */
 public class Slime {
+
 	private int x, y;
 	private int xv, yv;
 	public boolean isP1;
@@ -29,6 +30,7 @@ public class Slime {
 	 * @param isP1 is the slime the first player?
 	 */
 	public Slime(boolean isP1) {
+
 		if(isP1)
 			x = 200; //first player starting pos
 		else
@@ -37,24 +39,20 @@ public class Slime {
 		xv = 0;
 		yv = 0;
 		this.isP1 = isP1;
+
 	}
 
-	public int getX() {
-		return x;
-	}
+	//one-liner setters and getters
+	public int getX() { return x; }
+	public int getY() { return y; }
+	public int getYV() { return yv; }
+	public void setYV(int yv) { this.yv = yv; }
 
-	public int getY() {
-		return y;
-	}
-
+	//multi-liner setters and getters
 	public int getXV() {
 		synchronized(this) {
 			return xv;
 		}
-	}
-
-	public int getYV() {
-		return yv;
 	}
 
 	public void setX(int x) {
@@ -89,10 +87,6 @@ public class Slime {
 		synchronized(this) {
 			this.xv = xv;
 		}
-	}
-
-	public void setYV(int yv) {
-		this.yv = yv;
 	}
 
 }

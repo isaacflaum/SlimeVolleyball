@@ -20,6 +20,7 @@ package com.flaum;
  * Ball
  */
 public class Ball {
+
 	private int x, y; //x and y coordinates of the ball
 	private int xv, yv; //x and y velocities
 
@@ -27,31 +28,29 @@ public class Ball {
 	 * Default Constructor initializes ball above first player
 	 */
 	public Ball() {
+
 		x = 200; //above first player
 		y = 400; //in the air
 		xv = 0;
 		yv = 0;
+
 	}
 
-	public int getX() {
-		return x;
-	}
+	// one line getters and setters
+	public int getX() { return x; }
+	public int getY() { return y; }
+	public int getYV() { return yv; }
+	public void setY(int y) { this.y = y; }
 
-	public int getY() {
-		return y;
-	}
-
+	//multi-line getters and setters
 	public int getXV() {
 		synchronized(this) {
 			return xv;
 		}
 	}
 
-	public int getYV() {
-		return yv;
-	}
-
 	public void setX(int x) {
+
 		//check if out of bounds
 		if(x < 15) {
 			x = 15;
@@ -64,10 +63,7 @@ public class Ball {
 		synchronized(this) {
 			this.x = x;
 		}
-	}
 
-	public void setY(int y) {
-		this.y = y;
 	}
 
 	public void setXV(int xv) {

@@ -35,9 +35,11 @@ public class AI {
 
 	}
 
+	/**
+	 * Move AI in response to ball
+	 */
 	public void moveAI() {
-
-		//
+		System.out.println("stub");
 	}
 
 }

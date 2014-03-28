@@ -25,6 +25,7 @@ public class SlimeGame extends Thread {
 	private SlimeGameCanvas gameCanvas; //need methods from View
 	private int p1Score, p2Score; //hold players scores
 	private Slime p1, p2; //first and second player
+	private AI computer; //computer player
 	private Ball ball; //game ball
 	private int p1OldX , p1OldY, p2OldX, p2OldY, 
 		ballOldX, ballOldY; //old variables to paint over
@@ -34,13 +35,17 @@ public class SlimeGame extends Thread {
 	   * @param canvas is the view associated with the game (model)
 	   */
 	public SlimeGame(SlimeGameCanvas canvas) {
+
+		//initialize game variables
 		started = false;
 		gameCanvas = canvas;
 		p1 = new Slime(true);
 		p2 = new Slime(false);
 		ball = new Ball();
+		computer = new AI(p2, ball);
 		p1Score = 0;
 		p2Score = 0;
+
 	}
 	
 	//setters and getters
@@ -81,24 +86,10 @@ public class SlimeGame extends Thread {
 				p1.setYV(p1.getYV() - 2); //gravity
 				p1.setY(p1.getY() + p1.getYV());
 			}
-
-
-
-
-
-
-
-
-			/**
-	   		* @todo implement AI
-	   		* ai.makeNextMove(); something like that
-	   		*/
 			
-
-
-
-
-
+			//move ai
+			computer.moveAI();
+			
 			//move ball
 			ball.setYV(ball.getYV() - 1);
 			ball.setY(ball.getY() + ball.getYV());
